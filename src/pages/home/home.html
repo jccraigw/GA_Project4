@@ -16,9 +16,10 @@
   <p>
     <ion-img [style.background-image]="imgUrl" style="background-size: cover; background-position: center; background-repeat: no-repeat;" *ngIf="pictureTaken" ></ion-img>
   </p>
+  {{class}}
 
   <div id="camera_btn_wrapper" style="position: absolute; bottom: 0px; left: 0px; width: 100%;">
     <a (click)="takePicture()" *ngIf="pictureNotTaken"><ion-icon id="camera_btn" ios="ios-radio-button-on" md="md-radio-button-on"></ion-icon></a>
-    <a *ngIf="!pictureNotTaken"><ion-icon ios="ios-checkmark-circle-outline" md="md-checkmark-circle"></ion-icon></a> 
+    <a (click)="getInfo()" *ngIf="!pictureNotTaken"><ion-icon ios="ios-checkmark-circle-outline" md="md-checkmark-circle"></ion-icon></a> 
   </div>
 </ion-content>
