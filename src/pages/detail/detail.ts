@@ -18,16 +18,18 @@ export class DetailPage {
 
 	class1: any = "";
 	score1: any = "";
+	noInfo: any = "";
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
   		this.class1 = this.navParams.get('class1');
   		this.score1 = this.navParams.get('score1');
+  		this.noInfo = this.navParams.get('noInfo');
   }
 
-  // goToHomePage(){
+  goToHomePage(){
 
-  // 		//console.log('here')
-  // 		this.navCtrl.push(HomePage, {}, {animate: true, direction: 'forward'});
-  // 	}
+  		//console.log('here')
+  		this.navCtrl.push(HomePage, {},{});
+  	}
 }

@@ -28,19 +28,17 @@ export class HomePage {
 	flashOn: boolean = false;
 	infoLoading: boolean = false;
 	detailPage = DetailPage;
+	noInfo: string = "No new info 😢";
 	
 //
 	constructor(public navCtrl: NavController, private cameraPreview: CameraPreview, private sanitizer: DomSanitizer, private statusBar: StatusBar, private http: HTTP) {
 
 		
 
-  }
+  	}
  
   	goToDetailPage(){
-
-  		console.log('here detail page')
-  		this.navCtrl.push(DetailPage);
-  		this.navCtrl.pop(DetailPage);
+  		this.navCtrl.push(DetailPage, {noInfo: this.noInfo});
   	}
 
   	reverseCamera(){
@@ -63,6 +61,7 @@ export class HomePage {
 		this.pictureImgur= true;
 		this.bgColor = "blackbackground";
 		this.statusBar.hide();
+	
 		const pictureOpts: CameraPreviewPictureOptions = {
 			width: 1280,
 		  	height: 1920,
@@ -126,10 +125,10 @@ export class HomePage {
 
 	    	this.navCtrl.push(DetailPage, {
     			class1: this.class,
-    			score2: this.score
+    			score1: this.score
 			});
 	    	this.newPhoto();
-	    	this.goToDetailPage();
+	    	
 
   		})
   		.catch(error => {
