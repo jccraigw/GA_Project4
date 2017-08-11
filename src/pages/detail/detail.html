@@ -6,13 +6,14 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>detail</ion-title>
+  <ion-navbar hideBackButton>
+    <span>detail</span>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-this is my super awesome detail page.
+<ion-content padding (swipe)="goToHomePage()">
+{{class1}}
+{{score1}}
 </ion-content>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the DetailPage page.
@@ -15,8 +16,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DetailPage {
 
+	class1: any = "";
+	score1: any = "";
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  		this.class1 = this.navParams.get('class1');
+  		this.score1 = this.navParams.get('score1');
   }
 
+  // goToHomePage(){
 
+  // 		//console.log('here')
+  // 		this.navCtrl.push(HomePage, {}, {animate: true, direction: 'forward'});
+  // 	}
 }

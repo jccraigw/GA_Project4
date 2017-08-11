@@ -5,6 +5,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HTTP } from '@ionic-native/http';
 import { DetailPage } from '../detail/detail';
+import {Gesture} from 'ionic-angular/gestures/gesture';
+
 
 @Component({
 	selector: 'page-home',
@@ -26,17 +28,19 @@ export class HomePage {
 	flashOn: boolean = false;
 	infoLoading: boolean = false;
 	detailPage = DetailPage;
+	
 //
 	constructor(public navCtrl: NavController, private cameraPreview: CameraPreview, private sanitizer: DomSanitizer, private statusBar: StatusBar, private http: HTTP) {
 
-
+		
 
   }
-
+ 
   	goToDetailPage(){
 
-  		console.log('here')
+  		console.log('here detail page')
   		this.navCtrl.push(DetailPage);
+  		this.navCtrl.pop(DetailPage);
   	}
 
   	reverseCamera(){
@@ -95,6 +99,7 @@ export class HomePage {
 	 		this.imglink = JSON.parse(data.data);
 	 		console.log(this.imglink['data']['link']);
 	 		this.callWatson();
+	 		
 
 		 }).catch(error => {
 
@@ -118,6 +123,13 @@ export class HomePage {
 	    	console.log(data.status);
 	    	console.log(data.data); // data received by server
 	    	console.log(data.headers);
+
+	    	this.navCtrl.push(DetailPage, {
+    			class1: this.class,
+    			score2: this.score
+			});
+	    	this.newPhoto();
+	    	this.goToDetailPage();
 
   		})
   		.catch(error => {
