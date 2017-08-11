@@ -1,9 +1,7 @@
 page-home, ion-img{
    
 	background-color: transparent !important;
-
 }
-
 ion-content{
 	
 	width: 100% !important;
@@ -13,17 +11,13 @@ ion-content{
 }
 ion-title{
     
-    margin-top: 8px;
-
-  
+    margin-top: 8px;  
 }
-
 .toolbar-title{
-      color: white;
-        font-size:20px;
 
+    color: white;
+    font-size:20px;
 }
-
 ion-img{
 	
   	max-width: 100%;
@@ -39,37 +33,42 @@ ion-img{
 ion-icon{
     
     color: white;
-    font-size: 40px;
+    font-size: 60px;
+    text-shadow:
+    -0.6px -0.6px 0 #000,
+    0.6px -0.6px 0 #000,
+    -0.6px 0.6px 0 #000,
+    0.6px 0.6px 0 #000;
 } 
-
 #camera_btn_wrapper{
 	
-	height: 120px;	
+	height: 135px;	
 	margin-bottom: 0px;
     text-align: center;
-
-
 }
 #camera_btn{
-    
 
-
-    font-size: 95px;
+    font-size: 100px;
 }
 .redbackground{
 	
-	background-color: transparent !important;}
-
+	background-color: transparent !important;
+}
 .blackbackground{
 	
 	background-color: transparent !important;
 }
 #retake{
     
-    font-size: 45px;
-    font-weight: 800;
+    font-size: 50px;
+    font-weight: 900;
     margin-top: 20px;
     margin-left: 15px;
+    text-shadow:
+    -0.5px -0.5px 0 #000,
+    0.5px -0.5px 0 #000,
+    -0.5px 0.5px 0 #000,
+    0.5px 0.5px 0 #000;
 }
 #flash{
     
@@ -79,21 +78,23 @@ ion-icon{
     margin-right: 25px;
 }
 #reverse{
+
     float: right;
     font-weight: 500;
     margin-top: 20px;
     margin-right: 15px;
-
-
 }
 #no_flash{
     
-     float: right;
-     font-weight: 500;
-     margin-top: 20px;
-     margin-right: 25px;
+    float: right;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-right: 25px;
 }
-
+ion-spinner *{
+    stroke: white !important;
+    fill: black !important;
+}
 
 
 
