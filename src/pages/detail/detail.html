@@ -7,13 +7,18 @@
 <ion-header>
 
   <ion-navbar hideBackButton>
-    <span>❓❓❓❓</span>
+    <span>Results</span>
   </ion-navbar>
 
 </ion-header>
-
 <ion-content padding (swipe)="goToHomePage()">
-<p>{{noInfo}}</p>
-{{class1}}
-{{score1}}
+	<p>{{noInfo}}</p>
+	<ion-list>
+  		<button ion-item *ngFor="let class of classes" (click)="classSelected(class.class)">
+    	<ion-avatar item-start>
+      		{{class.score}}%
+    	</ion-avatar>
+    		{{class.class}} 
+  		</button>  
+	</ion-list>
 </ion-content>

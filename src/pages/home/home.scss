@@ -7,25 +7,27 @@ ion-content{
 	width: 100% !important;
     height: 100%;
     top: 0 !important;
-    left: 0 !important;
-
-   
+    left: 0 !important;   
 }
 ion-navbar{
-    
-
-    
+       
     border-width: thin !important;
-
+}
+.nav{
+    
+ 
 }
 ion-title{
-    
+  
     margin-top: 8px;  
 }
-.toolbar-title{
-
+.title{
+    margin-top: 20px; 
     color: white;
     font-size:20px;
+    float: left;
+    margin-left: 13px;
+
 }
 ion-img{
 	
@@ -43,7 +45,7 @@ ion-img{
 ion-icon{
     
     color: white;
-    font-size: 45px;
+    font-size: 35px;
     text-shadow:
     -0.6px -0.6px 0 #000,
     0.6px -0.6px 0 #000,

@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { Camera } from '@ionic-native/camera';
 import { CameraPreview} from '@ionic-native/camera-preview';
 import { HTTP } from '@ionic-native/http';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 
 import { MyApp } from './app.component';
@@ -34,6 +35,7 @@ import { DetailPage } from '../pages/detail/detail';
     Camera,
     CameraPreview,
     HTTP,
+    InAppBrowser,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

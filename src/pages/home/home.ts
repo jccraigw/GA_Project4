@@ -18,6 +18,8 @@ export class HomePage {
 	imgUrl: any = "";
 	class: any = "";
 	score: any = "";
+
+
 	imgUrl3: any = "";
 	watson: any = {};
 	imglink: any = "";
@@ -29,11 +31,13 @@ export class HomePage {
 	infoLoading: boolean = false;
 	detailPage = DetailPage;
 	noInfo: string = "No new info 😢";
+	classes = [];
+	
 	
 //
 	constructor(public navCtrl: NavController, private cameraPreview: CameraPreview, private sanitizer: DomSanitizer, private statusBar: StatusBar, private http: HTTP) {
 
-		
+		this.cameraPreview.setFlashMode('off');
 
   	}
  
@@ -117,15 +121,24 @@ export class HomePage {
 
   			this.watson= JSON.parse(data.data);
   			console.log("watson : ", this.watson['images'][0]['classifiers'][0]['classes'][0]['class'])
+
+  			for(let i = 0; i < this.watson['images'][0]['classifiers'][0]['classes'].length; i++){
+
+  				this.classes.push({class: this.watson['images'][0]['classifiers'][0]['classes'][i]['class'], score: Math.round(this.watson['images'][0]['classifiers'][0]['classes'][i]['score'] * 100)});
+  				
+
+  			}
   			this.class = this.watson['images'][0]['classifiers'][0]['classes'][0]['class'];
-  			this.score = this.watson['images'][0]['classifiers'][0]['classes'][0]['score'];
+  			this.score = parseInt(this.watson['images'][0]['classifiers'][0]['classes'][0]['score']) * 100;
+  			console.log(this.classes);
 	    	console.log(data.status);
 	    	console.log(data.data); // data received by server
 	    	console.log(data.headers);
 
 	    	this.navCtrl.push(DetailPage, {
     			class1: this.class,
-    			score1: this.score
+    			score1: this.score,
+    			classes: this.classes
 			});
 	    	this.newPhoto();
 	    	
