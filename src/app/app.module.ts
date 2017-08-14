@@ -7,7 +7,8 @@ import { Camera } from '@ionic-native/camera';
 import { CameraPreview} from '@ionic-native/camera-preview';
 import { HTTP } from '@ionic-native/http';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-
+import { File } from '@ionic-native/file';
+import { FilePath } from '@ionic-native/file-path';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -36,6 +37,8 @@ import { DetailPage } from '../pages/detail/detail';
     CameraPreview,
     HTTP,
     InAppBrowser,
+    File,
+    FilePath,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

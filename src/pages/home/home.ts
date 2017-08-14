@@ -6,6 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { HTTP } from '@ionic-native/http';
 import { DetailPage } from '../detail/detail';
 import {Gesture} from 'ionic-angular/gestures/gesture';
+import { File } from '@ionic-native/file';
+import { FilePath } from '@ionic-native/file-path';
 
 
 @Component({
@@ -35,7 +37,7 @@ export class HomePage {
 	
 	
 //
-	constructor(public navCtrl: NavController, private cameraPreview: CameraPreview, private sanitizer: DomSanitizer, private statusBar: StatusBar, private http: HTTP) {
+	constructor(private filePath: FilePath, private file: File, public navCtrl: NavController, private cameraPreview: CameraPreview, private sanitizer: DomSanitizer, private statusBar: StatusBar, private http: HTTP) {
 
 		this.cameraPreview.setFlashMode('off');
 
