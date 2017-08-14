@@ -1,14 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
 import { DomSanitizer } from '@angular/platform-browser';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HTTP } from '@ionic-native/http';
 import { DetailPage } from '../detail/detail';
 import {Gesture} from 'ionic-angular/gestures/gesture';
-import { File } from '@ionic-native/file';
-import { FilePath } from '@ionic-native/file-path';
-
 
 @Component({
 	selector: 'page-home',
@@ -19,8 +16,7 @@ export class HomePage {
 	
 	imgUrl: any = "";
 	class: any = "";
-	score: any = "";
-
+	score: any = "";x
 
 	imgUrl3: any = "";
 	watson: any = {};
@@ -37,7 +33,7 @@ export class HomePage {
 	
 	
 //
-	constructor(private filePath: FilePath, private file: File, public navCtrl: NavController, private cameraPreview: CameraPreview, private sanitizer: DomSanitizer, private statusBar: StatusBar, private http: HTTP) {
+	constructor(public navCtrl: NavController, private cameraPreview: CameraPreview, private sanitizer: DomSanitizer, private statusBar: StatusBar, private http: HTTP) {
 
 		this.cameraPreview.setFlashMode('off');
 
@@ -154,4 +150,5 @@ export class HomePage {
 
   		});
 	}
+
 }

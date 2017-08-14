@@ -29,6 +29,7 @@
         "@ionic-native/in-app-browser": "^4.1.0",
         "@ionic-native/splash-screen": "3.12.1",
         "@ionic-native/status-bar": "^3.12.1",
+        "@ionic-native/transfer": "^3.14.0",
         "@ionic/storage": "2.0.1",
         "cordova-browser": "^4.1.0",
         "cordova-ios": "^4.4.0",
@@ -38,6 +39,7 @@
         "cordova-plugin-console": "^1.0.5",
         "cordova-plugin-device": "^1.1.4",
         "cordova-plugin-file": "^4.3.3",
+        "cordova-plugin-file-transfer": "^1.6.3",
         "cordova-plugin-filepath": "^1.0.2",
         "cordova-plugin-http": "^1.2.0",
         "cordova-plugin-inappbrowser": "^1.7.1",
@@ -76,7 +78,8 @@
             "cordova-plugin-http": {},
             "cordova-plugin-inappbrowser": {},
             "cordova-plugin-file": {},
-            "cordova-plugin-filepath": {}
+            "cordova-plugin-filepath": {},
+            "cordova-plugin-file-transfer": {}
         },
         "platforms": [
             "browser",
