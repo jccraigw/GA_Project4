@@ -19,3 +19,14 @@ html, body, ion-app, ion-content, ion-page, .nav-decor, ion-nav{
 	background-color: transparent !important;
 }
 
+@font-face {
+  font-family: 'Humanst';
+  src: url('../assets/fonts/roboto-light.woff2') format('woff2'), url('../assets/fonts/roboto-light.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: 'Humanst';
+}
+
