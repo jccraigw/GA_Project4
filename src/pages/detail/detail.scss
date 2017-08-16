@@ -3,22 +3,27 @@ page-detail {
 	background-color: white !important;
 	color: black !important;
 	border-radius: 5px;
+	padding-top: 0;
 }
 ion-content{
 	
-	
+	padding-top: 0;
 }
 ion-navbar{
 	
-	text-align: center;	
+	text-align: center;
+
+	padding-top: 0;
+
 }
 span{
 	
 	
 }
-#nav_bg{
+.nav_bg{
 	
-	background-color: rgb(252, 135,37) !important;
+
+	padding-top: 0;
 }
 .toolbar-background{
 	
@@ -31,15 +36,27 @@ ion-title{
 }
 .toolbar-content-md{
 	
-	background-color: rgb(252, 135,37) !important;
+	
+	padding-top: 0;
 }
 .toolbar-title{
     padding: 0 12px;
     font-size: 2rem;
     font-weight: 500;
-    color: white;
+    color: rgb(252, 135,37) !important;
     margin-top: -30px;
 }
+.toolbar-background-md{
+	
+	padding-top: 0;
+}
+ion-header{
+	
 
+	padding-top: 0;
+}
 
-
+#percent{
+	
+	color: rgb(252, 135,37) !important;
+}

@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { HTTP } from '@ionic-native/http';
 import { DetailPage } from '../detail/detail';
 import {Gesture} from 'ionic-angular/gestures/gesture';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 @Component({
 	selector: 'page-home',
@@ -33,10 +34,11 @@ export class HomePage {
 	
 	
 //
-	constructor(public navCtrl: NavController, private cameraPreview: CameraPreview, private sanitizer: DomSanitizer, private statusBar: StatusBar, private http: HTTP) {
+	constructor(private screenOrientation: ScreenOrientation, public navCtrl: NavController, private cameraPreview: CameraPreview, private sanitizer: DomSanitizer, private statusBar: StatusBar, private http: HTTP) {
 
 		this.cameraPreview.setFlashMode('off');
-
+		this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+		this.newPhoto();
   	}
  
   	goToDetailPage(){
@@ -113,7 +115,6 @@ export class HomePage {
 	}
 
 	callWatson(){
-
 		this.http.get('https://watson-api-explorer.mybluemix.net/visual-recognition/api/v3/classify?api_key=8dbd7021ec5cc452e8b257418117bf84c39f65fe&url=' + this.imglink['data']['link'] + '&version=2016-05-20', {}, {})
   		.then(data => {
 
@@ -122,8 +123,7 @@ export class HomePage {
 
   			for(let i = 0; i < this.watson['images'][0]['classifiers'][0]['classes'].length; i++){
 
-  				this.classes.push({class: this.watson['images'][0]['classifiers'][0]['classes'][i]['class'], score: Math.round(this.watson['images'][0]['classifiers'][0]['classes'][i]['score'] * 100)});
-  				
+  				this.classes.push({class: this.watson['images'][0]['classifiers'][0]['classes'][i]['class'], score: Math.round(this.watson['images'][0]['classifiers'][0]['classes'][i]['score'] * 100)});			
 
   			}
   			this.class = this.watson['images'][0]['classifiers'][0]['classes'][0]['class'];
@@ -138,8 +138,7 @@ export class HomePage {
     			score1: this.score,
     			classes: this.classes
 			});
-	    	this.newPhoto();
-	    	
+	    	this.newPhoto();	
 
   		})
   		.catch(error => {

@@ -7,6 +7,8 @@ import { Camera } from '@ionic-native/camera';
 import { CameraPreview} from '@ionic-native/camera-preview';
 import { HTTP } from '@ionic-native/http';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
+
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -35,6 +37,7 @@ import { DetailPage } from '../pages/detail/detail';
     CameraPreview,
     HTTP,
     InAppBrowser,
+    ScreenOrientation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

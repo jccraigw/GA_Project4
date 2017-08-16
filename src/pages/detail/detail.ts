@@ -30,6 +30,8 @@ export class DetailPage {
   		this.score1 = this.navParams.get('score1');
   		this.noInfo = this.navParams.get('noInfo');
   		this.classes = this.navParams.get('classes');
+
+      
   }
 
   goToHomePage(){
