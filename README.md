@@ -7,17 +7,18 @@ WhatsThat - image visual recognition app - WDI PROJECT 4
 ## How to use this application
 
 - [Sign up][sign_up] in Bluemix, or use an existing account and create a visual recognition service in Bluemix to obtain api key
+- [Sign up][sign_up2] register your application with Imgur api to obtain Client-ID authorization 
 - Create a file named .env in the root directory of the project with the following content:
-
     ```none
-    VISUAL_RECOGNITION_API_KEY=<api_key>
+    API_URL=<your api key from Bluemix>
+    IMGUR_APIKEY=<your client-id from imgur> 
     ```
 - Install [Node.js][node_js]. Installing Node JS will also install [npm][npm].
-- Go to the project folder in a terminal and run
+- Go to the project folder in a terminal and run:
     ```sh
     $ npm install
     ```
-- In the project folder run 
+- In the project folder run:
 	```sh
 	$ ionic build ios
 	```
@@ -60,8 +61,11 @@ Browser
 
 1. remove imgur api
 2. camera focus options
+3. monetise application
 
 [sign_up]: https://console.ng.bluemix.net/registration/
+[sign_up2]: https://api.imgur.com/
 [npm]: https://www.npmjs.com
 [node_js]: http://nodejs.org/
+
 

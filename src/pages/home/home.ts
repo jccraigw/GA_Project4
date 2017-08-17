@@ -96,7 +96,7 @@ export class HomePage {
 	getInfo(){
 		this.pictureImgur = false;
 		this.infoLoading = true;
-		this.http.post('https://api.imgur.com/3/image', {'image': this.imgUrl3[0]}, {'Authorization': 'Client-ID 87bc75c6b87b4fe'} ).then(data =>{
+		this.http.post('https://api.imgur.com/3/image', {'image': this.imgUrl3[0]}, {'Authorization': 'Client-ID ' + IMGUR_APIKEY} ).then(data =>{
 
 	 		this.infoLoading = false;
 	 		this.imglink = JSON.parse(data.data);
@@ -115,7 +115,7 @@ export class HomePage {
 	}
 
 	callWatson(){
-		this.http.get('https://watson-api-explorer.mybluemix.net/visual-recognition/api/v3/classify?api_key=8dbd7021ec5cc452e8b257418117bf84c39f65fe&url=' + this.imglink['data']['link'] + '&version=2016-05-20', {}, {})
+		this.http.get('https://watson-api-explorer.mybluemix.net/visual-recognition/api/v3/classify?api_key=' + API_URL + '&url=' + this.imglink['data']['link'] + '&version=2016-05-20', {}, {})
   		.then(data => {
 
   			this.watson= JSON.parse(data.data);
