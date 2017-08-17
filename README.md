@@ -1,26 +1,67 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+# GA_Project4
 
-## How to use this template
+WhatsThat - image visual recognition app - WDI PROJECT 4
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
+- This app utilizes IBM Watsons visual recognition service that uses deep learning algorithms to analyze images for scenes, objects, faces, text, and other subjects that can give you insignts into your visual content. 
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
+## How to use this application
 
-### With the Ionic CLI:
+- [Sign up][sign_up] in Bluemix, or use an existing account and create a visual recognition service in Bluemix to obtain api key
+- Create a file named .env in the root directory of the project with the following content:
 
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
+    ```none
+    VISUAL_RECOGNITION_API_KEY=<api_key>
+    ```
+- Install [Node.js][node_js]. Installing Node JS will also install [npm][npm].
+- Go to the project folder in a terminal and run
+    ```sh
+    $ npm install
+    ```
+- In the project folder run 
+	```sh
+	$ ionic build ios
+	```
+- Open project in xcode and run on device
 
-```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myBlank blank
-```
+## User Stories
 
-Then, to run it, cd into `myBlank` and run:
+HOME PAGE 
+- As a end user I want to be able to take photos of scences, objects,faces, and other subjects.
+- As a end user I want to be able to adjust camera settings.
+- As a end user I want to be able to be to preview the picture before I process it.
+- As a end user I want to be able to retake the picture if needed.
 
-```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
-```
+Detail PAGE
+- As a end user I want to be see results for what I captured.
+- As a end user I want to see how accurate the analyst of the image was.
+- As a end user I want to be able to read more information on what I captured. 
 
-Substitute ios for android if not on a Mac.
+Browser 
+- As a end user I want to read relevant information on the subject capture. 
+
+## Wireframes
+
+1. [Imgur](http://i.imgur.com/9RJ4XP5.jpg)
+
+## Development Workflow
+
+- Trello Board - https://trello.com/b/xGc69RfM/ga-project-4
+
+## Technologies Used
+
+- HTML 5
+- Sass
+- Typescript
+- Angular 4
+- Ionic 2
+- Xcode
+
+## What Is Unfinished?
+
+1. remove imgur api
+2. camera focus options
+
+[sign_up]: https://console.ng.bluemix.net/registration/
+[npm]: https://www.npmjs.com
+[node_js]: http://nodejs.org/
 
