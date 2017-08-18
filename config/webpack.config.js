@@ -17,7 +17,8 @@ function getPlugins() {
   var plugins = [
     new webpack.DefinePlugin({
       'API_URL': JSON.stringify(process.env.API_URL),
-      'IMGUR_APIKEY': JSON.stringify(process.env.IMGUR_APIKEY)
+      'IMGUR_APIKEY': JSON.stringify(process.env.IMGUR_APIKEY),
+      'MASH_APIKEY': JSON.stringify(process.env.MASH_APIKEY)
       // Add any more variables here that you wish to define
     })
   ];

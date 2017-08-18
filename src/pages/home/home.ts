@@ -7,6 +7,7 @@ import { HTTP } from '@ionic-native/http';
 import { DetailPage } from '../detail/detail';
 import {Gesture} from 'ionic-angular/gestures/gesture';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
 
 @Component({
 	selector: 'page-home',
@@ -34,8 +35,9 @@ export class HomePage {
 	
 	
 //
-	constructor(private screenOrientation: ScreenOrientation, public navCtrl: NavController, private cameraPreview: CameraPreview, private sanitizer: DomSanitizer, private statusBar: StatusBar, private http: HTTP) {
+	constructor(private admobFree: AdMobFree, private screenOrientation: ScreenOrientation, public navCtrl: NavController, private cameraPreview: CameraPreview, private sanitizer: DomSanitizer, private statusBar: StatusBar, private http: HTTP) {
 
+		this.admobFree.banner.remove();
 		this.cameraPreview.setFlashMode('off');
 		this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
 		this.newPhoto();
@@ -96,7 +98,9 @@ export class HomePage {
 	getInfo(){
 		this.pictureImgur = false;
 		this.infoLoading = true;
-		this.http.post('https://api.imgur.com/3/image', {'image': this.imgUrl3[0]}, {'Authorization': 'Client-ID ' + IMGUR_APIKEY} ).then(data =>{
+
+		
+		this.http.post('https://imgur-apiv3.p.mashape.com/3/image', {'image': this.imgUrl3[0]}, {'Authorization': 'Client-ID ' + IMGUR_APIKEY, 'X-Mashape-Key': MASH_APIKEY } ).then(data =>{
 
 	 		this.infoLoading = false;
 	 		this.imglink = JSON.parse(data.data);
