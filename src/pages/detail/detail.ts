@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { StatusBar } from '@ionic-native/status-bar';
+import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
 
 
 /**
@@ -24,12 +25,13 @@ export class DetailPage {
 	noInfo: any = "";
 	classes: any =[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private iab: InAppBrowser, private statusBar: StatusBar) {
+  constructor(private admobFree: AdMobFree, public navCtrl: NavController, public navParams: NavParams, private iab: InAppBrowser, private statusBar: StatusBar) {
 
   		this.class1 = this.navParams.get('class1');
   		this.score1 = this.navParams.get('score1');
   		this.noInfo = this.navParams.get('noInfo');
-  		this.classes = this.navParams.get('classes');      
+  		this.classes = this.navParams.get('classes');
+      this.showBanner();     
   }
 
   goToHomePage(){
@@ -41,6 +43,22 @@ export class DetailPage {
   classSelected(name){
   		this.statusBar.hide();
   		const browser = this.iab.create('https://en.wikipedia.org/wiki/' + name);
+  }
+
+  showBanner() {
+ 
+      let bannerConfig: AdMobFreeBannerConfig = {
+          isTesting: true, // Remove in production
+          autoShow: true,
+          id: 'ca-app-pub-4912988950997945/8393044626'
+      };
+
+      this.admobFree.banner.config(bannerConfig);
+
+      this.admobFree.banner.prepare().then(() => {
+          // success
+      }).catch(e => console.log(e));
+ 
   }
 
 }

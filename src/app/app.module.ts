@@ -8,6 +8,7 @@ import { CameraPreview} from '@ionic-native/camera-preview';
 import { HTTP } from '@ionic-native/http';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
 
 
 import { MyApp } from './app.component';
@@ -35,6 +36,7 @@ import { DetailPage } from '../pages/detail/detail';
     SplashScreen,
     Camera,
     CameraPreview,
+    AdMobFree,
     HTTP,
     InAppBrowser,
     ScreenOrientation,
