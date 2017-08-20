@@ -19,5 +19,7 @@
     <a (click)="takePicture()" *ngIf="pictureNotTaken"><ion-icon id="camera_btn" ios="ios-radio-button-on" md="md-radio-button-on"></ion-icon></a>
     <a (click)="getInfo()" *ngIf="!pictureNotTaken && pictureImgur"><ion-icon id="info" ios="ios-checkmark-circle-outline" md="md-checkmark-circle"></ion-icon></a>
     <ion-spinner *ngIf="infoLoading" name="ios"></ion-spinner> 
+    <a (click)="zoomIn()"><ion-icon ios="ios-add" md="md-add"></ion-icon></a>
+    <a (click)="zoomOut()"><ion-icon ios="ios-remove" md="md-remove"></ion-icon></a>
   </div>
 </ion-content>

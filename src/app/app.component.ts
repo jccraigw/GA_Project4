@@ -31,8 +31,7 @@ export class MyApp {
         tapPhoto: true,
         previewDrag: true,
         toBack: true,
-        alpha: 1,
-        tapFocus: true
+        alpha: 1
       };
 
       

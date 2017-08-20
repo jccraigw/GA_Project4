@@ -31,14 +31,17 @@ export class HomePage {
 	detailPage = DetailPage;
 	noInfo: string = "No new info 😢";
 	classes = [];
+	zoomNum: number = 0;
 		
 //
 	constructor(private admobFree: AdMobFree, private screenOrientation: ScreenOrientation, public navCtrl: NavController, private cameraPreview: CameraPreview, private sanitizer: DomSanitizer, private statusBar: StatusBar, private http: HTTP) {
-
+		this.newPhoto();
 		this.admobFree.banner.remove();
 		this.cameraPreview.setFlashMode('off');
 		this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-		this.newPhoto();
+		this.zoomNum = 0;
+		this.cameraPreview.setZoom(0);
+		
   	}
  
   	goToDetailPage(){
@@ -49,6 +52,14 @@ export class HomePage {
   	reverseCamera(){
 
  		this.cameraPreview.switchCamera();
+  	}
+  	zoomIn(){
+  		console.log('zoomNum: ', this.zoomNum)
+  		this.cameraPreview.setZoom(this.zoomNum = this.zoomNum + 1);
+  	}
+  	zoomOut(){
+  		console.log('zoomNum: ', this.zoomNum)
+  		this.cameraPreview.setZoom(this.zoomNum = this.zoomNum - 1);
   	}
 
   	flash(){
@@ -65,9 +76,7 @@ export class HomePage {
 
 	takePicture(){
 
-		this.pictureTaken = true;
-		this.pictureNotTaken= false;
-		this.pictureImgur= true;
+	
 		this.bgColor = "blackbackground";
 		this.statusBar.hide();
 	
@@ -80,6 +89,9 @@ export class HomePage {
 		// take a picture
 		this.cameraPreview.takePicture(pictureOpts).then((imageData) => {
 
+			this.pictureTaken = true;
+			this.pictureNotTaken= false;
+			this.pictureImgur= true;
 			this.imgUrl3= imageData;
 		  	let picture = 'data:image/jpeg;base64,' + imageData;
 		  	console.log("picture: ", this.imgUrl3[0]);
