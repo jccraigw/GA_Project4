@@ -31,7 +31,7 @@ export class HomePage {
 	detailPage = DetailPage;
 	noInfo: string = "No new info 😢";
 	classes = [];
-	zoomNum: number = 0;
+	zoomNum: number = 1;
 		
 //
 	constructor(private admobFree: AdMobFree, private screenOrientation: ScreenOrientation, public navCtrl: NavController, private cameraPreview: CameraPreview, private sanitizer: DomSanitizer, private statusBar: StatusBar, private http: HTTP) {
@@ -39,8 +39,8 @@ export class HomePage {
 		this.admobFree.banner.remove();
 		this.cameraPreview.setFlashMode('off');
 		this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-		this.zoomNum = 0;
-		this.cameraPreview.setZoom(0);
+		this.zoomNum = 1;
+		this.cameraPreview.setZoom(1);
 		
   	}
  
@@ -59,7 +59,9 @@ export class HomePage {
   	}
   	zoomOut(){
   		console.log('zoomNum: ', this.zoomNum)
-  		this.cameraPreview.setZoom(this.zoomNum = this.zoomNum - 1);
+  		if(this.zoomNum > 1){
+  			this.cameraPreview.setZoom(this.zoomNum = this.zoomNum - 1);
+  		}
   	}
 
   	flash(){
