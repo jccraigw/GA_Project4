@@ -45,7 +45,7 @@ export class HomePage {
   	}
  
   	goToDetailPage(){
-
+  		this.newPhoto();
   		this.navCtrl.push(DetailPage, {noInfo: this.noInfo});
   	}
 
