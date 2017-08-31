@@ -8,6 +8,7 @@ import { DetailPage } from '../detail/detail';
 import {Gesture} from 'ionic-angular/gestures/gesture';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
+import { PhotoLibrary } from '@ionic-native/photo-library';
 
 @Component({
 	selector: 'page-home',
@@ -34,7 +35,7 @@ export class HomePage {
 	zoomNum: number = 1;
 		
 //
-	constructor(private admobFree: AdMobFree, private screenOrientation: ScreenOrientation, public navCtrl: NavController, private cameraPreview: CameraPreview, private sanitizer: DomSanitizer, private statusBar: StatusBar, private http: HTTP) {
+	constructor(private photoLibrary: PhotoLibrary, private admobFree: AdMobFree, private screenOrientation: ScreenOrientation, public navCtrl: NavController, private cameraPreview: CameraPreview, private sanitizer: DomSanitizer, private statusBar: StatusBar, private http: HTTP) {
 		this.newPhoto();
 		this.admobFree.banner.remove();
 		this.cameraPreview.setFlashMode('off');

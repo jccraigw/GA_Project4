@@ -6,6 +6,7 @@
       <div class="title" *ngIf="!pictureTaken" >
         <span id="fire">🔥</span>
       </div> 
+        <a id="upload_btn"><ion-icon id="upload" ios="md-images" md="md-images"></ion-icon></a>
         <a (click)="reverseCamera()" *ngIf="!pictureTaken"><ion-icon id="reverse" ios="ios-reverse-camera-outline" md="md-reverse-camera"></ion-icon></a>   
         <a (click)="flash()" *ngIf="flashOn && !pictureTaken"><ion-icon id="flash" ios="ios-flash" md="md-flash"></ion-icon></a>
         <a (click)="noFlash()" *ngIf="!flashOn && !pictureTaken"><ion-icon id="no_flash" ios="ios-flash-outline" md="md-flash"></ion-icon></a>     
