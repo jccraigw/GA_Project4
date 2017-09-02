@@ -9,6 +9,7 @@ import {Gesture} from 'ionic-angular/gestures/gesture';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
 import { PhotoLibrary } from '@ionic-native/photo-library';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 @Component({
 	selector: 'page-home',
@@ -33,9 +34,10 @@ export class HomePage {
 	noInfo: string = "No new info 😢";
 	classes = [];
 	zoomNum: number = 1;
+	private imageSrc: string;
 		
 //
-	constructor(private photoLibrary: PhotoLibrary, private admobFree: AdMobFree, private screenOrientation: ScreenOrientation, public navCtrl: NavController, private cameraPreview: CameraPreview, private sanitizer: DomSanitizer, private statusBar: StatusBar, private http: HTTP) {
+	constructor(private camera: Camera, private photoLibrary: PhotoLibrary, private admobFree: AdMobFree, private screenOrientation: ScreenOrientation, public navCtrl: NavController, private cameraPreview: CameraPreview, private sanitizer: DomSanitizer, private statusBar: StatusBar, private http: HTTP) {
 		this.newPhoto();
 		this.admobFree.banner.remove();
 		this.cameraPreview.setFlashMode('off');
@@ -103,6 +105,24 @@ export class HomePage {
 
 		 	console.log(err);
 		  	let picture = 'assets/img/test.jpg';
+		});
+	}
+	uploadPic(){
+
+		const options: CameraOptions = {
+			quality: 100,
+			destinationType: this.camera.DestinationType.DATA_URL,
+			sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+			encodingType: this.camera.EncodingType.JPEG,
+			mediaType: this.camera.MediaType.PICTURE
+		}
+
+		this.camera.getPicture(options).then((imageData) => {
+			// imageData is either a base64 encoded string or a file URI
+			// If it's base64:
+			let base64Image = 'data:image/jpeg;base64,' + imageData;
+		}, (err) => {
+ 			// Handle error
 		});
 	}
 
