@@ -35,8 +35,13 @@ export class DetailPage {
   }
 
   goToHomePage(){
-
-  		this.navCtrl.push(HomePage, {},{});
+      let navOptions = {
+          animate: true,
+          animation: 'ios-transition',
+          duration:100,
+          iosdelay:  100
+       };
+  		this.navCtrl.push(HomePage, {},navOptions);
 
   	}
 

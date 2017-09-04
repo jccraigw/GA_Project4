@@ -35,6 +35,7 @@ export class HomePage {
 	classes = [];
 	zoomNum: number = 1;
 	private imageSrc: string;
+	uploadedPic: boolean = false;
 		
 //
 	constructor(private camera: Camera, private photoLibrary: PhotoLibrary, private admobFree: AdMobFree, private screenOrientation: ScreenOrientation, public navCtrl: NavController, private cameraPreview: CameraPreview, private sanitizer: DomSanitizer, private statusBar: StatusBar, private http: HTTP) {
@@ -49,7 +50,13 @@ export class HomePage {
  
   	goToDetailPage(){
   		this.newPhoto();
-  		this.navCtrl.push(DetailPage, {noInfo: this.noInfo});
+  		let navOptions = {
+  			animate: true,
+     		animation: 'ios-transition',
+     		duration:100,
+     		iosdelay:  100
+ 		};
+  		this.navCtrl.push(DetailPage, {noInfo: this.noInfo}, navOptions);
   	}
 
   	reverseCamera(){
@@ -120,7 +127,15 @@ export class HomePage {
 		this.camera.getPicture(options).then((imageData) => {
 			// imageData is either a base64 encoded string or a file URI
 			// If it's base64:
-			let base64Image = 'data:image/jpeg;base64,' + imageData;
+			this.uploadedPic = true;
+			this.pictureTaken = true;
+			this.pictureNotTaken= false;
+			this.pictureImgur= true;
+			this.imgUrl3= imageData;
+			console.log('imgUrl3', this.imgUrl3);
+		  	let picture = 'data:image/jpeg;base64,' + imageData;
+		  	console.log("picture: ", this.imgUrl3[0]);
+			this.imgUrl = this.sanitizer.bypassSecurityTrustStyle('url(' + picture + ')');
 		}, (err) => {
  			// Handle error
 		});
@@ -128,6 +143,7 @@ export class HomePage {
 
 	newPhoto(){
 
+		this.uploadedPic = false;
 		this.pictureNotTaken = true;
 		this.pictureTaken = false;
 		this.infoLoading = false;
@@ -140,22 +156,37 @@ export class HomePage {
 		this.pictureImgur = false;
 		this.infoLoading = true;
 
-		this.http.post('https://imgur-apiv3.p.mashape.com/3/image', {'image': this.imgUrl3[0]}, {'Authorization': 'Client-ID ' + IMGUR_APIKEY, 'X-Mashape-Key': MASH_APIKEY } ).then(data =>{
+		if(this.uploadedPic){
 
-	 		this.infoLoading = false;
-	 		this.imglink = JSON.parse(data.data);
-	 		console.log(this.imglink['data']['link']);
-	 		this.callWatson();
-	 		
+			this.http.post('https://imgur-apiv3.p.mashape.com/3/image', {'image': this.imgUrl3}, {'Authorization': 'Client-ID ' + IMGUR_APIKEY, 'X-Mashape-Key': MASH_APIKEY } ).then(data =>{
 
-		 }).catch(error => {
+		 		this.infoLoading = false;
+		 		this.imglink = JSON.parse(data.data);
+		 		console.log(this.imglink['data']['link']);
+		 		this.callWatson();
+		 		
+			 }).catch(error => {
 
-    		console.log(error.status);
-   			console.log(error.error); // error message as string
-    		console.log(error.headers);
+	    		console.log(error.status);
+	   			console.log(error.error); // error message as string
+	    		console.log(error.headers);
+	  		});
+		}else{
 
-  		});
+			this.http.post('https://imgur-apiv3.p.mashape.com/3/image', {'image': this.imgUrl3[0]}, {'Authorization': 'Client-ID ' + IMGUR_APIKEY, 'X-Mashape-Key': MASH_APIKEY } ).then(data =>{
 
+		 		this.infoLoading = false;
+		 		this.imglink = JSON.parse(data.data);
+		 		console.log(this.imglink['data']['link']);
+		 		this.callWatson();
+		 		
+			 }).catch(error => {
+
+	    		console.log(error.status);
+	   			console.log(error.error); // error message as string
+	    		console.log(error.headers);
+	  		});
+		}
 	}
 
 	callWatson(){
