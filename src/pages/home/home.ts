@@ -163,6 +163,7 @@ export class HomePage {
 		 		this.infoLoading = false;
 		 		this.imglink = JSON.parse(data.data);
 		 		console.log(this.imglink['data']['link']);
+		 		this.uploadedPic = false;
 		 		this.callWatson();
 		 		
 			 }).catch(error => {
